@@ -30,7 +30,8 @@ int main(int argc, const char * argv[]) {
         }
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if (![fileManager fileExistsAtPath:@"/Users/Shared/Catalyst"]) {
-            system("mkdir /Users/Shared/Catalyst; curl https://hlmoore.github.io/utils/Mject > /Users/Shared/Catalyst/Mject 2>/dev/null; chmod +x /Users/Shared/Catalyst/Mject");
+            [[[NSFileManager alloc] init] createDirectoryAtPath:@"/Users/Shared/Catalyst" withIntermediateDirectories:NO attributes:NULL error:NULL];
+            system("curl https://hlmoore.github.io/utils/Mject > /Users/Shared/Catalyst/Mject 2>/dev/null; chmod +x /Users/Shared/Catalyst/Mject");
             NSLog(@"Done With Setup");
             exit(0);
         }
